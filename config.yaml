@@ -1,0 +1,36 @@
+# Cấu hình hệ thống Meeting Intelligence cho Hiệu trưởng Đại học
+
+app:
+  name: "Meeting Intelligence - Trợ lý Họp Hiệu trưởng"
+  version: "1.0.0"
+  institution_default: "ĐẠI HỌC BÁCH KHOA HÀ NỘI"
+
+audio:
+  sample_rate: 16000
+  channels: 1
+  format: "WAV"
+  chunk_duration_sec: 30
+
+transcriber:
+  mode: "offline" # "offline" dùng whisper local, "online" dùng Whisper API
+  model_size: "large-v3" # "tiny", "base", "small", "medium", "large-v3"
+  language: "vi"
+  device: "auto" # "cuda", "cpu", "mps", "auto"
+  temperature: 0.0
+
+analyzer:
+  provider: "gemini" # "openai", "gemini", "anthropic"
+  model: "gemini-2.5-pro"
+  temperature: 0.2
+  max_output_tokens: 8192
+
+latex:
+  compiler: "xelatex"
+  runs: 2
+  timeout: 60
+  template: "report.tex.j2"
+  clean_aux: false
+
+paths:
+  output_dir: "./output"
+  templates_dir: "./meeting_assistant/templates"

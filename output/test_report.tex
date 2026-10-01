@@ -1,0 +1,228 @@
+% !TeX program = xelatex
+\documentclass[11pt,a4paper]{article}
+
+% Thiết lập font chữ tiếng Việt qua fontspec (XeLaTeX)
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX}
+\IfFontExistsTF{Times New Roman}{%
+  \setmainfont{Times New Roman}%
+}{%
+  \IfFontExistsTF{Liberation Serif}{%
+    \setmainfont{Liberation Serif}%
+  }{%
+    \setmainfont{Latin Modern Roman}%
+  }%
+}
+
+% Định dạng lề trang chuẩn công văn hành chính
+\usepackage[margin=20mm,headheight=15pt,headsep=12pt,footskip=20pt]{geometry}
+
+% Quản lý màu sắc
+\usepackage{xcolor}
+\definecolor{navy}{HTML}{17324D}
+\definecolor{light}{HTML}{EDF2F7}
+\definecolor{muted}{HTML}{536171}
+\definecolor{bordergray}{HTML}{CBD5E0}
+
+% Tiêu đề đầu trang và chân trang
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textsf{\textbf{\textcolor{navy}{ ĐẠI HỌC BÁCH KHOA HÀ NỘI }}}}
+\fancyhead[R]{\textcolor{muted}{\textsf{[MẪU GIẢ ĐỊNH | HT-2026-10-01]}}}
+\fancyfoot[L]{\textcolor{muted}{\footnotesize\textsf{Bản tham mưu nội bộ • Chưa xác nhận}}}
+\fancyfoot[R]{\textcolor{muted}{\footnotesize\textsf{Trang \thepage}}}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+
+% Gói bảng biểu nâng cao
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{enumitem}
+
+% Khoảng cách đoạn văn và ngắt dòng
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt minus 1pt}
+
+% Định nghĩa macro định dạng nguồn trích dẫn
+\newcommand{\source}[1]{\textcolor{muted}{\footnotesize\textsf{[#1]}}}
+
+% Định nghĩa macro hộp cảnh báo / lưu ý (Notice Box)
+\newcommand{\notice}[2]{%
+  \vspace{4pt}%
+  \noindent\colorbox{light}{%
+    \parbox{\dimexpr\textwidth-2\fboxsep\relax}{%
+      \vspace{2pt}%
+      \small\textbf{\textcolor{navy}{#1:}} \textcolor{black}{#2}%
+      \vspace{2pt}%
+    }%
+  }%
+  \vspace{4pt}%
+}
+
+% Định dạng tiêu đề các phần (Sections)
+\usepackage{titlesec}
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{navy}}
+  {\thesection.}{0.6em}{}
+  [\vspace{1pt}\titlerule\vspace{3pt}]
+
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{navy}}
+  {\thesubsection}{0.5em}{}
+
+\begin{document}
+
+% Tiêu đề chính của văn bản báo cáo
+\begin{center}
+  {\LARGE\bfseries\color{navy} BẢN THAM MƯU NỘI DUNG CUỘC HỌP BAN GIÁM HIỆU}\\[4pt]
+  {\large\bfseries\color{muted} PHỤC VỤ CÔNG TÁC ĐIỀU HÀNH CỦA HIỆU TRƯỞNG}\\[2pt]
+  {\small\textit{(Tổng hợp tự động từ hệ thống Meeting Intelligence kết hợp rà soát chuyên viên)}}
+\end{center}
+\vspace{6pt}
+
+\notice{Mẫu minh họa}{Văn bản này được tổng hợp từ hệ thống Meeting Intelligence phục vụ công tác điều hành nội bộ của Hiệu trưởng. Các thông tin cần được rà soát đối chiếu trước khi ban hành thông báo kết luận chính thức.}
+
+% ==============================================================================
+% 1. THÔNG TIN CUỘC HỌP
+% ==============================================================================
+\section{Thông tin cuộc họp}
+
+\begin{tabularx}{\textwidth}{@{}>{\bfseries\color{navy}}p{3.8cm} X@{}}
+  \toprule
+  Thời gian: & 08:30--10:45, ngày 01/10/2026 \\
+  Địa điểm: & Phòng họp số 1 - Nhà C1, Đại học Bách khoa Hà Nội \\
+  Chủ trì: & PGS. TS. Huỳnh Quyết Thắng - Hiệu trưởng \\
+  Thành phần tham dự: & Các Phó Hiệu trưởng, Trưởng phòng Đào tạo, Trưởng phòng Kế hoạch - Tài chính, Trưởng phòng Tổ chức Cán bộ, Viện trưởng các Viện đào tạo \\
+  Mục tiêu cuộc họp: & Thống nhất phương án điều chỉnh mức học phí theo lộ trình tự chủ; phê duyệt chỉ tiêu tuyển sinh các ngành kỹ thuật mũi nhọn và phương án cấp học bổng thu hút nhân tài. \\
+  Mã nguồn dữ liệu: & \texttt{BG-01}, \texttt{BC-TS-01}, \texttt{DA-TC-02} \\
+  Người rà soát: & TS. Nguyễn Văn Hưng - Trưởng phòng Thư ký Tổng hợp (Ngày rà soát: 01/10/2026) \\
+  \bottomrule
+\end{tabularx}
+
+% ==============================================================================
+% 2. HIỆU TRƯỞNG CẦN NẮM NGAY
+% ==============================================================================
+\section{Hiệu trưởng cần nắm ngay}
+
+\begin{itemize}[leftmargin=1.5em, itemsep=3pt]
+  \item \textbf{Điểm khẩn}: Chi tiết khẩn cấp \source{BG-01, 00:05:10}
+\end{itemize}
+
+% ==============================================================================
+% 3. QUYẾT ĐỊNH, ĐỀ XUẤT VÀ VẤN ĐỀ CÒN MỞ
+% ==============================================================================
+\section{Quyết định, đề xuất và vấn đề còn mở}
+
+\notice{Quy tắc diễn giải}{Các mục "Đã kết luận" đã được Hiệu trưởng chốt trong cuộc họp; "Đang đề xuất" là phương án chuyên môn đang xin ý kiến; "Chưa xác định" là nội dung cần rà soát lại văn bản hoặc xin ý kiến chỉ đạo bổ sung.}
+
+\vspace{3pt}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash\bfseries}p{2.8cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{4.5cm}@{}}
+  \toprule
+  \rowcolor{light}
+  \textcolor{navy}{Trạng thái} & \textcolor{navy}{Nội dung chi tiết} & \textcolor{navy}{Hàm ý thực thi} \\
+  \midrule
+  \textbf{Đã kết luận} & Quyết định 1 & Triển khai ngay \\
+  \midrule
+  \bottomrule
+\end{tabularx}
+
+% ==============================================================================
+% 4. BẢNG GIAO VIỆC VÀ THỜI HẠN
+% ==============================================================================
+\section{Bảng giao việc và thời hạn}
+
+\begin{tabularx}{\textwidth}{@{}>{\bfseries\centering\arraybackslash}p{1.3cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{3.2cm} >{\centering\arraybackslash}p{2.2cm} >{\raggedright\arraybackslash}p{3.2cm}@{}}
+  \toprule
+  \rowcolor{light}
+  \textcolor{navy}{Mã} & \textcolor{navy}{Sản phẩm / Đầu ra} & \textcolor{navy}{Chịu trách nhiệm} & \textcolor{navy}{Thời hạn} & \textcolor{navy}{Căn cứ giao việc} \\
+  \midrule
+  NV01 & Báo cáo & Phòng ĐT & 10/10/2026 & \small Chỉ đạo \\
+  \midrule
+  \bottomrule
+\end{tabularx}
+
+% ==============================================================================
+% 5. RỦI RO, NGUỒN LỰC VÀ TÁC ĐỘNG
+% ==============================================================================
+\section{Rủi ro, nguồn lực và tác động}
+
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash\bfseries}p{3.6cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{4.8cm}@{}}
+  \toprule
+  \rowcolor{light}
+  \textcolor{navy}{Vấn đề / Rủi ro} & \textcolor{navy}{Tác động dự kiến} & \textcolor{navy}{Phương án phòng ngừa / Giảm thiểu} \\
+  \midrule
+  Rủi ro 1 & Tác động & Giải pháp \\
+  \midrule
+  \bottomrule
+\end{tabularx}
+
+% ==============================================================================
+% 6. THEO DÕI SAU HỌP
+% ==============================================================================
+\section{Theo dõi sau họp}
+
+\begin{itemize}[leftmargin=1.5em, itemsep=3pt]
+  \item Hành động 1
+\end{itemize}
+
+% ==============================================================================
+% 7. ĐỊNH HƯỚNG, BẤT ĐỒNG VÀ TÍN HIỆU XU HƯỚNG
+% ==============================================================================
+\section{Định hướng, bất đồng và tín hiệu xu hướng}
+
+\textbf{\textcolor{navy}{7.1. Định hướng đã tuyên bố:}}
+\begin{quote}
+  \textit{ Định hướng A }
+\end{quote}
+
+\textbf{\textcolor{navy}{7.2. Các quan điểm bất đồng / chưa thống nhất:}}
+\begin{quote}
+  \textit{ Không có }
+\end{quote}
+
+\textbf{\textcolor{navy}{7.3. Các nội dung cần xác minh đối chiếu:}}
+\begin{quote}
+  \textit{ Kiểm tra B }
+\end{quote}
+
+% ==============================================================================
+% 8. GÓP Ý THAM MƯU DÀNH CHO HIỆU TRƯỞNG
+% ==============================================================================
+\section{Góp ý tham mưu dành cho Hiệu trưởng}
+
+\notice{Phần này do hệ thống đề xuất}{Các đề xuất dưới đây được tạo ra độc lập bởi trợ lý tham mưu nhằm gợi mở các góc nhìn rủi ro và phương án chỉ đạo chiến lược; đây KHÔNG PHẢI là phát biểu hoặc kết luận của Hiệu trưởng.}
+
+\begin{itemize}[leftmargin=1.5em, itemsep=4pt]
+  \item Gợi ý tham mưu 1
+\end{itemize}
+
+% ==============================================================================
+% 9. KIỂM CHỨNG TRƯỚC KHI SỬ DỤNG
+% ==============================================================================
+\section{Kiểm chứng trước khi sử dụng}
+
+\begin{tabularx}{\textwidth}{@{}>{\bfseries\raggedright\arraybackslash}p{4cm} >{\raggedright\arraybackslash}X >{\centering\arraybackslash}p{3cm}@{}}
+  \toprule
+  \rowcolor{light}
+  \textcolor{navy}{Nội dung cần kiểm chứng} & \textcolor{navy}{Tài liệu / Căn cứ minh chứng} & \textcolor{navy}{Trạng thái} \\
+  \midrule
+  Số liệu C & Minh chứng D & \textbf{Đã rõ} \\
+  \midrule
+  \bottomrule
+\end{tabularx}
+
+\vspace{25pt}
+
+% Bảng ký tên xác nhận cuối văn bản
+\noindent
+\begin{tabularx}{\textwidth}{@{}>{\centering\arraybackslash}X >{\centering\arraybackslash}X@{}}
+  \textbf{\textcolor{navy}{NGƯỜI RÀ SOÁT NỘI DUNG}} & \textbf{\textcolor{navy}{HIỆU TRƯỞNG / NGƯỜI ĐƯỢC GIAO XÁC NHẬN}} \\
+  \textit{(Ký và ghi rõ họ tên)} & \textit{(Ký, phê duyệt và ban hành thông báo kết luận)} \\[50pt]
+  \textbf{ TS. Nguyễn Văn Hưng - Trưởng phòng Thư ký Tổng hợp } & \textbf{ PGS. TS. Huỳnh Quyết Thắng - Hiệu trưởng } \\
+  Ngày: {{ meeting.review_date | default('DD/MM/YYYY') }} & Ngày: \ldots\ldots / \ldots\ldots / 2026 \\
+\end{tabularx}
+
+\end{document}

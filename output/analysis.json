@@ -1,0 +1,67 @@
+{
+  "meeting": {
+    "university": "ĐẠI HỌC BÁCH KHOA HÀ NỘI",
+    "meeting_id": "HT-2026-10-01",
+    "time": "08:30--10:45, ngày 01/10/2026",
+    "location": "Phòng họp số 1 - Nhà C1, Đại học Bách khoa Hà Nội",
+    "chair": "PGS. TS. Huỳnh Quyết Thắng - Hiệu trưởng",
+    "attendees": "Các Phó Hiệu trưởng, Trưởng phòng Đào tạo, Trưởng phòng Kế hoạch - Tài chính, Trưởng phòng Tổ chức Cán bộ, Viện trưởng các Viện đào tạo",
+    "objective": "Thống nhất phương án điều chỉnh mức học phí theo lộ trình tự chủ; phê duyệt chỉ tiêu tuyển sinh các ngành kỹ thuật mũi nhọn và phương án cấp học bổng thu hút nhân tài.",
+    "sources": [
+      "BG-01",
+      "BC-TS-01",
+      "DA-TC-02"
+    ],
+    "reviewer": "TS. Nguyễn Văn Hưng - Trưởng phòng Thư ký Tổng hợp",
+    "review_date": "01/10/2026"
+  },
+  "key_points": [
+    {
+      "bold": "Nội dung ghi nhận từ biên bản",
+      "detail": "Hệ thống đã ghi nhận các phát biểu trong biên bản gỡ băng nhưng cuộc gọi LLM gặp gián đoạn kết nối.",
+      "source": "BG-01, 00:00:00"
+    }
+  ],
+  "decisions": [
+    {
+      "status": "Chưa xác định",
+      "content": "Cần kiểm chứng lại kết luận trực tiếp từ biên bản viết tay của thư ký.",
+      "implication": "Chưa đủ căn cứ ban hành kết luận chính thức."
+    }
+  ],
+  "tasks": [
+    {
+      "code": "NV01",
+      "deliverable": "Đối chiếu và hoàn thiện biên bản tổng hợp cuộc họp",
+      "owner": "Phòng Thư ký Tổng hợp",
+      "deadline": "Chưa xác định",
+      "basis": "Căn cứ gỡ băng [BG-01, 00:00:00]"
+    }
+  ],
+  "risks": [
+    {
+      "issue": "Thiếu thông tin đối chiếu tự động",
+      "impact": "Có thể chậm tiến độ ban hành thông báo kết luận của Hiệu trưởng",
+      "mitigation": "Thư ký rà soát thủ công transcript đính kèm"
+    }
+  ],
+  "follow_up": [
+    "Kiểm tra lại toàn bộ file ghi âm đối với các đoạn có tiếng ồn",
+    "Xin ý kiến Hiệu trưởng về các điểm chưa thống nhất"
+  ],
+  "direction_signals": {
+    "stated": "Đảm bảo tuân thủ quy chế và tiến độ công việc chung của Nhà trường.",
+    "disagreements": "Chưa ghi nhận bất đồng rõ nét hoặc cần nghe lại file ghi âm gốc.",
+    "to_verify": "Các số liệu tài chính và chỉ tiêu tuyển sinh cần đối chiếu với văn bản phòng ban chức năng."
+  },
+  "suggestions": [
+    "Đề xuất Hiệu trưởng yêu cầu các đơn vị gửi báo cáo giải trình chi tiết bằng văn bản trước phiên họp tiếp theo."
+  ],
+  "verification": [
+    {
+      "item": "Số liệu chỉ tiêu và dự toán ngân sách",
+      "evidence": "Tờ trình của Phòng Đào tạo & Kế hoạch Tài chính",
+      "status": "Cần kiểm chứng"
+    }
+  ]
+}

@@ -1,0 +1,272 @@
+% !TeX program = xelatex
+\documentclass[11pt,a4paper]{article}
+
+% Thiết lập font chữ tiếng Việt qua fontspec (XeLaTeX)
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX}
+\IfFontExistsTF{Times New Roman}{%
+  \setmainfont{Times New Roman}%
+}{%
+  \IfFontExistsTF{Liberation Serif}{%
+    \setmainfont{Liberation Serif}%
+  }{%
+    \setmainfont{Latin Modern Roman}%
+  }%
+}
+
+% Định dạng lề trang chuẩn công văn hành chính
+\usepackage[margin=20mm,headheight=15pt,headsep=12pt,footskip=20pt]{geometry}
+
+% Quản lý màu sắc
+\usepackage{xcolor}
+\definecolor{navy}{HTML}{17324D}
+\definecolor{light}{HTML}{EDF2F7}
+\definecolor{muted}{HTML}{536171}
+\definecolor{bordergray}{HTML}{CBD5E0}
+
+% Tiêu đề đầu trang và chân trang
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textsf{\textbf{\textcolor{navy}{ {{ meeting.university | default('ĐẠI HỌC BÁCH KHOA HÀ NỘI') }} }}}}
+\fancyhead[R]{\textcolor{muted}{\textsf{[MẪU GIẢ ĐỊNH | {{ meeting.meeting_id | default('HT-2026-10-01') }}]}}}
+\fancyfoot[L]{\textcolor{muted}{\footnotesize\textsf{Bản tham mưu nội bộ • Chưa xác nhận}}}
+\fancyfoot[R]{\textcolor{muted}{\footnotesize\textsf{Trang \thepage}}}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+
+% Gói bảng biểu nâng cao
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{enumitem}
+
+% Khoảng cách đoạn văn và ngắt dòng
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt minus 1pt}
+
+% Định nghĩa macro định dạng nguồn trích dẫn
+\newcommand{\source}[1]{\textcolor{muted}{\footnotesize\textsf{[#1]}}}
+
+% Định nghĩa macro hộp cảnh báo / lưu ý (Notice Box)
+\newcommand{\notice}[2]{%
+  \vspace{4pt}%
+  \noindent\colorbox{light}{%
+    \parbox{\dimexpr\textwidth-2\fboxsep\relax}{%
+      \vspace{2pt}%
+      \small\textbf{\textcolor{navy}{#1:}} \textcolor{black}{#2}%
+      \vspace{2pt}%
+    }%
+  }%
+  \vspace{4pt}%
+}
+
+% Định dạng tiêu đề các phần (Sections)
+\usepackage{titlesec}
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{navy}}
+  {\thesection.}{0.6em}{}
+  [\vspace{1pt}\titlerule\vspace{3pt}]
+
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{navy}}
+  {\thesubsection}{0.5em}{}
+
+\begin{document}
+
+% Tiêu đề chính của văn bản báo cáo
+\begin{center}
+  {\LARGE\bfseries\color{navy} BẢN THAM MƯU NỘI DUNG CUỘC HỌP BAN GIÁM HIỆU}\\[4pt]
+  {\large\bfseries\color{muted} PHỤC VỤ CÔNG TÁC ĐIỀU HÀNH CỦA HIỆU TRƯỞNG}\\[2pt]
+  {\small\textit{(Tổng hợp tự động từ hệ thống Meeting Intelligence kết hợp rà soát chuyên viên)}}
+\end{center}
+\vspace{6pt}
+
+\notice{Mẫu minh họa}{Văn bản này được tổng hợp từ hệ thống Meeting Intelligence phục vụ công tác điều hành nội bộ của Hiệu trưởng. Các thông tin cần được rà soát đối chiếu trước khi ban hành thông báo kết luận chính thức.}
+
+% ==============================================================================
+% 1. THÔNG TIN CUỘC HỌP
+% ==============================================================================
+\section{Thông tin cuộc họp}
+
+\begin{tabularx}{\textwidth}{@{}>{\bfseries\color{navy}}p{3.8cm} X@{}}
+  \toprule
+  Thời gian: & {{ meeting.time | default('Chưa xác định') }} \\
+  Địa điểm: & {{ meeting.location | default('Phòng họp Ban Giám hiệu') }} \\
+  Chủ trì: & {{ meeting.chair | default('Chưa xác định') }} \\
+  Thành phần tham dự: & {{ meeting.attendees | default('Ban Giám hiệu và Trưởng các đơn vị') }} \\
+  Mục tiêu cuộc họp: & {{ meeting.objective | default('Chưa xác định') }} \\
+  Mã nguồn dữ liệu: & {% for src in meeting.sources %}\texttt{ {{ src }} }{% if not loop.last %}, {% endif %}{% endfor %} \\
+  Người rà soát: & {{ meeting.reviewer | default('[Họ tên người rà soát]') }} (Ngày rà soát: {{ meeting.review_date | default('Chưa xác định') }}) \\
+  \bottomrule
+\end{tabularx}
+
+% ==============================================================================
+% 2. HIỆU TRƯỞNG CẦN NẮM NGAY
+% ==============================================================================
+\section{Hiệu trưởng cần nắm ngay}
+
+\begin{itemize}[leftmargin=1.5em, itemsep=3pt]
+{% for point in key_points %}
+  \item \textbf{ {{ point.bold }} }: {{ point.detail }} \source{ {{ point.source }} }
+{% else %}
+  \item \textbf{Chưa xác định nội dung khẩn}: Đang chờ dữ liệu cập nhật từ biên bản chi tiết.
+{% endfor %}
+\end{itemize}
+
+% ==============================================================================
+% 3. QUYẾT ĐỊNH, ĐỀ XUẤT VÀ VẤN ĐỀ CÒN MỞ
+% ==============================================================================
+\section{Quyết định, đề xuất và vấn đề còn mở}
+
+\notice{Quy tắc diễn giải}{Các mục "Đã kết luận" đã được Hiệu trưởng chốt trong cuộc họp; "Đang đề xuất" là phương án chuyên môn đang xin ý kiến; "Chưa xác định" là nội dung cần rà soát lại văn bản hoặc xin ý kiến chỉ đạo bổ sung.}
+
+\vspace{3pt}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash\bfseries}p{2.8cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{4.5cm}@{}}
+  \toprule
+  \rowcolor{light}
+  \textcolor{navy}{Trạng thái} & \textcolor{navy}{Nội dung chi tiết} & \textcolor{navy}{Hàm ý thực thi} \\
+  \midrule
+{% for d in decisions %}
+  {% if d.status == 'Đã kết luận' %}
+    \textcolor{navy}{\textbf{Đã kết luận}}
+  {% elif d.status == 'Đang đề xuất' %}
+    \textcolor{muted}{\textbf{Đang đề xuất}}
+  {% else %}
+    \textcolor{red!70!black}{\textbf{ {{ d.status | default('Chưa xác định') }} }}
+  {% endif %}
+  & {{ d.content }} & {{ d.implication }} \\
+  \midrule
+{% else %}
+  \textit{Chưa xác định} & Chưa có dữ liệu quyết định hoặc đề xuất. & Cần kiểm chứng biên bản giấy. \\
+  \midrule
+{% endfor %}
+  \bottomrule
+\end{tabularx}
+
+% ==============================================================================
+% 4. BẢNG GIAO VIỆC VÀ THỜI HẠN
+% ==============================================================================
+\section{Bảng giao việc và thời hạn}
+
+\begin{tabularx}{\textwidth}{@{}>{\bfseries\centering\arraybackslash}p{1.3cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{3.2cm} >{\centering\arraybackslash}p{2.2cm} >{\raggedright\arraybackslash}p{3.2cm}@{}}
+  \toprule
+  \rowcolor{light}
+  \textcolor{navy}{Mã} & \textcolor{navy}{Sản phẩm / Đầu ra} & \textcolor{navy}{Chịu trách nhiệm} & \textcolor{navy}{Thời hạn} & \textcolor{navy}{Căn cứ giao việc} \\
+  \midrule
+{% for task in tasks %}
+  {{ task.code }} & {{ task.deliverable }} & {{ task.owner }} & {{ task.deadline }} & \small {{ task.basis }} \\
+  \midrule
+{% else %}
+  NV00 & Đối soát biên bản chi tiết & Phòng Thư ký Tổng hợp & Chưa xác định & Cuộc họp Ban Giám hiệu \\
+  \midrule
+{% endfor %}
+  \bottomrule
+\end{tabularx}
+
+% ==============================================================================
+% 5. RỦI RO, NGUỒN LỰC VÀ TÁC ĐỘNG
+% ==============================================================================
+\section{Rủi ro, nguồn lực và tác động}
+
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash\bfseries}p{3.6cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{4.8cm}@{}}
+  \toprule
+  \rowcolor{light}
+  \textcolor{navy}{Vấn đề / Rủi ro} & \textcolor{navy}{Tác động dự kiến} & \textcolor{navy}{Phương án phòng ngừa / Giảm thiểu} \\
+  \midrule
+{% for risk in risks %}
+  {{ risk.issue }} & {{ risk.impact }} & {{ risk.mitigation }} \\
+  \midrule
+{% else %}
+  Rủi ro thiếu dữ liệu đối sánh & Ảnh hưởng tới chất lượng ban hành kết luận & Thư ký tiến hành nghe lại băng ghi âm đoạn tranh luận \\
+  \midrule
+{% endfor %}
+  \bottomrule
+\end{tabularx}
+
+% ==============================================================================
+% 6. THEO DÕI SAU HỌP
+% ==============================================================================
+\section{Theo dõi sau họp}
+
+\begin{itemize}[leftmargin=1.5em, itemsep=3pt]
+{% for act in follow_up %}
+  \item {{ act }}
+{% else %}
+  \item Đôn đốc các phòng chức năng gửi phụ lục số liệu theo phân công của Hiệu trưởng.
+{% endfor %}
+\end{itemize}
+
+% ==============================================================================
+% 7. ĐỊNH HƯỚNG, BẤT ĐỒNG VÀ TÍN HIỆU XU HƯỚNG
+% ==============================================================================
+\section{Định hướng, bất đồng và tín hiệu xu hướng}
+
+\textbf{\textcolor{navy}{7.1. Định hướng đã tuyên bố:}}
+\begin{quote}
+  \textit{ {{ direction_signals.stated | default('Chưa xác định định hướng xuyên suốt.') }} }
+\end{quote}
+
+\textbf{\textcolor{navy}{7.2. Các quan điểm bất đồng / chưa thống nhất:}}
+\begin{quote}
+  \textit{ {{ direction_signals.disagreements | default('Chưa ghi nhận bất đồng đáng kể tại cuộc họp.') }} }
+\end{quote}
+
+\textbf{\textcolor{navy}{7.3. Các nội dung cần xác minh đối chiếu:}}
+\begin{quote}
+  \textit{ {{ direction_signals.to_verify | default('Cần đối chiếu với quy chế đào tạo hiện hành và kế hoạch tài chính đã phê duyệt.') }} }
+\end{quote}
+
+% ==============================================================================
+% 8. GÓP Ý THAM MƯU DÀNH CHO HIỆU TRƯỞNG
+% ==============================================================================
+\section{Góp ý tham mưu dành cho Hiệu trưởng}
+
+\notice{Phần này do hệ thống đề xuất}{Các đề xuất dưới đây được tạo ra độc lập bởi trợ lý tham mưu nhằm gợi mở các góc nhìn rủi ro và phương án chỉ đạo chiến lược; đây KHÔNG PHẢI là phát biểu hoặc kết luận của Hiệu trưởng.}
+
+\begin{itemize}[leftmargin=1.5em, itemsep=4pt]
+{% for sugg in suggestions %}
+  \item {{ sugg }}
+{% else %}
+  \item Đề xuất Hiệu trưởng yêu cầu Văn phòng tổng hợp báo cáo tiến độ các đề án trọng điểm trước ngày 15 hằng tháng.
+{% endfor %}
+\end{itemize}
+
+% ==============================================================================
+% 9. KIỂM CHỨNG TRƯỚC KHI SỬ DỤNG
+% ==============================================================================
+\section{Kiểm chứng trước khi sử dụng}
+
+\begin{tabularx}{\textwidth}{@{}>{\bfseries\raggedright\arraybackslash}p{4cm} >{\raggedright\arraybackslash}X >{\centering\arraybackslash}p{3cm}@{}}
+  \toprule
+  \rowcolor{light}
+  \textcolor{navy}{Nội dung cần kiểm chứng} & \textcolor{navy}{Tài liệu / Căn cứ minh chứng} & \textcolor{navy}{Trạng thái} \\
+  \midrule
+{% for v in verification %}
+  {{ v.item }} & {{ v.evidence }} &
+  {% if v.status == 'Đã rõ' %}
+    \textcolor{green!60!black}{\textbf{Đã rõ}}
+  {% else %}
+    \textcolor{red!70!black}{\textbf{ {{ v.status | default('Cần kiểm chứng') }} }}
+  {% endif %} \\
+  \midrule
+{% else %}
+  Đối chiếu các mốc thời hạn & Sổ tay công tác tuần của Ban Giám hiệu & \textcolor{red!70!black}{\textbf{Cần kiểm chứng}} \\
+  \midrule
+{% endfor %}
+  \bottomrule
+\end{tabularx}
+
+\vspace{25pt}
+
+% Bảng ký tên xác nhận cuối văn bản
+\noindent
+\begin{tabularx}{\textwidth}{@{}>{\centering\arraybackslash}X >{\centering\arraybackslash}X@{}}
+  \textbf{\textcolor{navy}{NGƯỜI RÀ SOÁT NỘI DUNG}} & \textbf{\textcolor{navy}{HIỆU TRƯỞNG / NGƯỜI ĐƯỢC GIAO XÁC NHẬN}} \\
+  \textit{(Ký và ghi rõ họ tên)} & \textit{(Ký, phê duyệt và ban hành thông báo kết luận)} \\[50pt]
+  \textbf{ {{ meeting.reviewer | default('[Họ tên người rà soát]') }} } & \textbf{ {{ meeting.chair | default('[Hiệu trưởng]') }} } \\
+  Ngày: {{ meeting.review_date | default('DD/MM/YYYY') }} & Ngày: \ldots\ldots / \ldots\ldots / 2026 \\
+\end{tabularx}
+
+\end{document}

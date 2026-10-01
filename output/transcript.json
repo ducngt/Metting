@@ -1,0 +1,34 @@
+[
+  {
+    "start": 12.0,
+    "end": 45.0,
+    "start_fmt": "00:00:12",
+    "end_fmt": "00:00:45",
+    "speaker": "Hiệu trưởng",
+    "text": "Chào các thầy cô trong Ban Giám hiệu và lãnh đạo các phòng ban. Hôm nay chúng ta họp về lộ trình tự chủ tài chính và đề án tuyển sinh 2027."
+  },
+  {
+    "start": 50.0,
+    "end": 130.0,
+    "start_fmt": "00:00:50",
+    "end_fmt": "00:02:10",
+    "speaker": "Trưởng phòng Kế hoạch - Tài chính",
+    "text": "Báo cáo Thầy Hiệu trưởng, theo tờ trình DA-TC-02, mức học phí trần khối ngành kỹ thuật dự kiến điều chỉnh tăng 12% theo lộ trình Nghị định 97, đồng thời trích 8% quỹ học bổng."
+  },
+  {
+    "start": 135.0,
+    "end": 210.0,
+    "start_fmt": "00:02:15",
+    "end_fmt": "00:03:30",
+    "speaker": "Trưởng phòng Đào tạo",
+    "text": "Về chỉ tiêu, chúng tôi đề xuất bổ sung 200 chỉ tiêu cho ngành Vi mạch Bán dẫn và mở mới chuyên ngành AI Ứng dụng. Tuy nhiên cần đầu tư thêm 3 phòng thí nghiệm."
+  },
+  {
+    "start": 215.0,
+    "end": 280.0,
+    "start_fmt": "00:03:35",
+    "end_fmt": "00:04:40",
+    "speaker": "Hiệu trưởng",
+    "text": "Tôi kết luận đồng ý chủ trương tăng chỉ tiêu ngành Vi mạch. Giao Phòng Đào tạo hoàn thiện đề án trước ngày 15/10/2026. Phòng Tài chính xây dựng dự toán gói học bổng 50 tỷ đồng trước ngày 20/10/2026."
+  }
+]

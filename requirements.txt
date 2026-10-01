@@ -1,0 +1,33 @@
+# ==============================================================================
+# REQUIREMENTS CHO HỆ THỐNG MEETING INTELLIGENCE CHO HIỆU TRƯỞNG
+# ==============================================================================
+
+# Xử lý âm thanh & Thu âm
+sounddevice>=0.4.6
+soundfile>=0.12.1
+pydub>=0.25.1
+numpy>=1.24.0
+
+# Nhận dạng giọng nói (ASR)
+# Whisper cục bộ (offline)
+openai-whisper>=20231117
+torch>=2.0.0
+torchaudio>=2.0.0
+
+# SDK gọi API AI (Online)
+openai>=1.12.0
+google-genai>=0.1.1
+anthropic>=0.18.0
+
+# Xử lý dữ liệu & Template LaTeX
+jinja2>=3.1.3
+pydantic>=2.6.0
+pyyaml>=6.0.1
+python-dotenv>=1.0.1
+
+# Hỗ trợ CLI & Tiện ích
+rich>=13.7.0
+typer>=0.9.0
+requests>=2.31.0
+tqdm>=4.66.1
+pytest>=8.0.0

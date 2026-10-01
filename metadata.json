@@ -1,0 +1,8 @@
+{
+  "name": "Meeting Intelligence - Trợ lý Họp Hiệu trưởng",
+  "description": "Hệ thống Meeting Intelligence hỗ trợ Hiệu trưởng đại học: Ghi âm, ASR Whisper, Phân tích tham mưu LLM và Xuất bản biên bản XeLaTeX tiếng Việt chuẩn mực.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
